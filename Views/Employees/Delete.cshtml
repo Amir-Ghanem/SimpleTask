@@ -1,0 +1,30 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Delete Employee";
+}
+
+<div class="container mt-5">
+    <h2>Delete Employee</h2>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Name: @Model.Name</h4>
+            <p class="card-text">Date of Birth: @Model.DateOfBirth.ToShortDateString()</p>
+            <p class="card-text">Email: @Model.Email</p>
+            <p class="card-text">Mobile: @Model.Mobile</p>
+            <p class="card-text">Hire Date: @Model.HireDate.ToShortDateString()</p>
+            <p class="card-text">Salary: @Model.Salary</p>
+            <p class="card-text">Department: @Model.Department.Name</p>
+            <p class="card-text">Profile Image: <img src="/uploads/employees/@Model.ProfileImage" width="250" height="300" /></p>
+            <p class="card-text">
+                Created By: @Model.CreatedBy?.Name</p>
+            <p class="card-text">Modified By: @Model.ModifiedBy?.Name</p>
+        </div>
+    </div>
+
+    <form asp-action="DeleteConfirmed" method="post" class="mt-3">
+        <input type="hidden" asp-for="ID" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
